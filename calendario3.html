@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Título de la página</title>
+    <style>
+        td{
+            text-align:center
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <td colspan="7"><span id="mesYAño"></span></td>
+            </tr>
+            <tr>
+                <td>D</td>
+                <td>L</td>
+                <td>M</td>
+                <td>M</td>
+                <td>J</td>
+                <td>V</td>
+                <td>S</td>
+            </tr>
+            <tr>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+            </tr>
+            <tr>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+            </tr>
+            <tr>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+            </tr>
+            <tr>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+            </tr>
+            <tr>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+            </tr>
+            <tr>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+                <td class="d"></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var superior=document.getElementById("mesYAño");
+        var fecha1=new Date("december 1 2024");
+        var relleno="";
+        
+ const casillas=document.getElementsByClassName("d");
+       
+       var mes=fecha1.getMonth();
+       var mesAct=mes;
+       var mesSig=mes+1;
+       var año=fecha1.getFullYear();
+       var dia=fecha1.getDate()
+       
+       if(mesSig==12){
+           mesSig=0
+       }
+       var nombreDelMes=
+       [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December"
+       ];
+        var nombreDelMesEspañol=
+       [
+          "Enero",
+          "Febrero",
+          "Marzo",
+          "Abril",
+          "Mayo",
+          "Junio",
+          "Julio",
+          "Agosto",
+          "Setiembre",
+          "Octubre",
+          "Noviembre",
+          "Diciembre"
+       ];
+       
+       var fecha2=
+       new Date(`${nombreDelMes[mesSig]} 1 ${año}`);
+       
+       //Tope
+       superior.innerHTML=
+       `${nombreDelMesEspañol[mesAct]} del ${año} `
+       
+        //Hallar el ultimo dia de cada mes
+        var ultDiaDelMes=
+  new Date(fecha2.getTime()-86400000).getDate();
+       //Primer dia del.mes
+  var posicion=fecha1.getDay();
+        
+        
+       for(i=posicion;i<casillas.length;i++){
+            casillas[i].innerHTML=(i-posicion)+1;
+            if(casillas[i].innerHTML==ultDiaDelMes){
+                break;
+            }
+            if(casillas[i].innerHTML==dia){
+                     casillas[i].style.backgroundColor="yellow"
+            }
+       }document.write(fecha1+"<br>"+fecha2)
+       
+       //Inicio
+       for(i=4;i<posicion;i++){
+           casillas[i].innerHTML=relleno
+       } 
+       for(i=ultDiaDelMes+posicion;i<casillas.length;i++){
+           casillas[i].innerHTML=relleno;
+       }
+    </script>
+</body>
+</html>
